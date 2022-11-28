@@ -1,0 +1,18 @@
+# .github/workflows/release.yml
+name: call
+
+on:
+  workflow_dispatch:
+
+# ...
+
+jobs:
+  createtag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d_%H-%M')"
+      - uses: freeletics/gha_test/.github/workflows/release.yml@main
+        with:
+          tag: "gha-prod-${{ steps.date.outputs.date }}"

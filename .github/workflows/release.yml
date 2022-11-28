@@ -2,11 +2,12 @@
 name: release
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       tag:
         description: 'New tag name'
         required: true
+        type: string
 
 # ...
 
